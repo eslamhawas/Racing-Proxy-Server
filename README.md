@@ -2,7 +2,7 @@
 
 A Spring Boot proxy service that implements a unique **racing strategy** for handling identical concurrent requests. When multiple identical requests arrive, it sends ALL of them to the upstream API simultaneously and uses the fastest response to complete all waiting clients.
 
-## 🎯 How It Works
+##  How It Works
 
 Instead of traditional request deduplication (which sends only one upstream request), this service:
 
@@ -13,7 +13,7 @@ Instead of traditional request deduplication (which sends only one upstream requ
 
 This approach can significantly reduce response times when upstream services have variable latency.
 
-## 🚀 Features
+##  Features
 
 - **Request Racing**: Multiple upstream requests race each other
 - **Response Sharing**: Fastest response is shared with all waiting clients
@@ -22,7 +22,7 @@ This approach can significantly reduce response times when upstream services hav
 - **Error Handling**: Graceful failure handling when all upstream requests fail
 - **Debug Logging**: Detailed console output for monitoring races
 
-## 📊 Performance Benefits
+##  Performance Benefits
 
 **Traditional Approach:**
 
@@ -38,7 +38,7 @@ This approach can significantly reduce response times when upstream services hav
 
 **Result**: If upstream latency varies between 1-5 seconds, racing approach will consistently deliver ~1 second responses instead of random 1-5 second responses.
 
-## 🛠️ Setup
+##  Setup
 
 ### Prerequisites
 
@@ -71,7 +71,7 @@ mvn spring-boot:run
 
 The service will start on `http://localhost:8080`
 
-## 📖 Usage
+##  Usage
 
 ### Basic Request
 
@@ -108,7 +108,7 @@ Request #5 completed
 ...
 ```
 
-## 🔧 Configuration
+##  Configuration
 
 ### Request Matching
 
@@ -141,7 +141,7 @@ private String generateRequestKey(HttpMethod method, String url, HttpHeaders hea
 }
 ```
 
-## 📡 API Reference
+##  API Reference
 
 ### Proxy Endpoint
 
@@ -163,7 +163,7 @@ private String generateRequestKey(HttpMethod method, String url, HttpHeaders hea
 - **400 Bad Request**: Missing `X-Target-Url` header
 - **502 Bad Gateway**: All upstream requests failed
 
-## 🔍 Monitoring
+##  Monitoring
 
 ### Debug Information
 
@@ -180,7 +180,7 @@ The service logs detailed information about request racing:
 - **Response time improvement**: Compare to single-request approach
 - **Upstream load**: Monitor if racing causes issues for upstream services
 
-## ⚠️ Important Considerations
+##  Important Considerations
 
 ### Upstream Load
 
@@ -212,7 +212,7 @@ The service stores request groups in memory. For high-volume scenarios, consider
 - Monitoring memory usage
 - Implementing request group limits
 
-## 🧪 Testing
+##  Testing
 
 ### Unit Tests
 
@@ -238,24 +238,16 @@ Monitor console output to verify that:
 2. Only one "WON the race" message appears per request group
 3. All clients receive the same response
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
+##  License
 
 This project is licensed under the Apache License 2.0 License - see the [LICENSE](LICENSE) file for details.
 
-## 🔗 Related Projects
+##  Related Projects
 
 - [Spring WebFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html)
 - [WebClient Documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/web.html#web.reactive.webclient)
 
-## 📈 Roadmap
+##  Roadmap
 
 - [ ] Add configuration for maximum racing requests per group
 - [ ] Implement upstream request timeout configuration
@@ -264,7 +256,3 @@ This project is licensed under the Apache License 2.0 License - see the [LICENSE
 - [ ] Circuit breaker pattern for failing upstreams
 - [ ] WebSocket proxy support
 - [ ] Request/response transformation hooks
-
----
-
-**⚡ Built for speed, designed for scale!**
